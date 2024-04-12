@@ -1,3 +1,5 @@
+import Login from "@/frontend/components/Login"
+import Register from "@/frontend/components/Register"
 import { useState } from "react"
 
 export default function Home() {
@@ -14,9 +16,8 @@ export default function Home() {
 
 
     </div>
-
-    <div className="flex flex-col h-svh w-1/2 justify-center items-center ">
-
+    {state === "" ? <div className="flex flex-col h-svh w-1/2 justify-center items-center ">
+      
       <h1>Join what's going on in the world today.</h1>
 
       <button className="text-center border mb-10 w-24 rounded-lg bg-violet-400 border-violet-900 text-white"
@@ -26,9 +27,9 @@ export default function Home() {
       <button className="text-center border w-24 rounded-lg border-violet-400"
         onClick={() => handleClick("log")}> Login </button>
 
-    </div>
+    </div> : state === "log" ? <Login /> : state === "reg" ? <Register /> : undefined}
 
-  </div>
+  </div> 
 
 
 }
