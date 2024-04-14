@@ -28,7 +28,7 @@ export default function Login() {
 
         <Link href="passwordReset"><MainButton onClick={() => handleClick()} text="forgor 💀 ?" color="light" /></Link>
 
-
+        
     </div>
 
 } 
