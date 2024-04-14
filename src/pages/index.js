@@ -1,40 +1,41 @@
+
 import Login from "@/frontend/components/Login"
 import Register from "@/frontend/components/Register"
-import Image from "next/image"
+import MainButton from "@/frontend/components/buttons/MainButton"
+
 import { useState } from "react"
 
 export default function Home() {
 
-  const [state, setState] = useState("")
+	const [state, setState] = useState("")
 
-  function handleClick(display) {
-    setState(display)
-  }
+	function handleClick(display) {
+		setState((ps) => ps = display)
+	}
 
-  return <div className="flex">
+	return <div className="flex h-svh">
 
-    <div className="w-1/2 flex items-center justify-center border-r-2">
+		<div className="w-1/2 flex items-center justify-center border-r-2">
 
-      <img src="/temp.svg" className="h-1/2" />
+			<img src="/temp.svg" className="h-1/2" />
 
-    </div>
+		</div>
 
-    {state === "" ? <div className="flex flex-col h-svh w-1/2 justify-center items-center ">
+		{state === "" ? <div className="flex flex-col w-1/2 justify-center items-center ">
 
-      <h1 className="text-3xl mb-10 ml-6 self-start">Join what's going on in the world today.</h1>
-
-      <button className="text-center border mb-10 w-24 rounded-lg bg-violet-400 border-violet-900 text-white"
-        onClick={() => handleClick("reg")}> Register </button>
+			<h1 className="text-3xl mb-10 ml-6 self-start">Join what's going on in the world today.</h1>
 
 
-      <h2>Already with us?</h2>
+			<MainButton text="Register" onClick={() => handleClick("reg")} color="dark" />
+			<br />
 
-      <button className="text-center border w-24 rounded-lg border-violet-400"
-        onClick={() => handleClick("log")}> Login </button>
+			<h2>Already with us?</h2>
 
-    </div> : state === "log" ? <Login /> : state === "reg" ? <Register /> : undefined}
+			<MainButton text="Login" onClick={() => handleClick("log")} color="light" />
 
-  </div>
+		</div> : state === "log" ? <Login /> : state === "reg" ? <Register /> : undefined}
+
+	</div>
 
 
 }
