@@ -1,5 +1,6 @@
 import Login from "@/frontend/components/Login"
 import Register from "@/frontend/components/Register"
+import Image from "next/image"
 import { useState } from "react"
 
 export default function Home() {
@@ -12,14 +13,15 @@ export default function Home() {
 
   return <div className="flex">
 
-    <div className="w-1/2">
+    <div className="w-1/2 flex items-center justify-center border-r-2">
 
+      <img src="/temp.svg" className="h-1/2" />
 
     </div>
 
     {state === "" ? <div className="flex flex-col h-svh w-1/2 justify-center items-center ">
 
-      <h1>Join what's going on in the world today.</h1>
+      <h1 className="text-3xl mb-10 ml-6 self-start">Join what's going on in the world today.</h1>
 
       <button className="text-center border mb-10 w-24 rounded-lg bg-violet-400 border-violet-900 text-white"
         onClick={() => handleClick("reg")}> Register </button>
