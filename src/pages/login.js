@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { useState } from "react"
-import MainButton from "@/frontend/components/buttons/MainButton" 
+import MainButton from "@/frontend/components/buttons/MainButton"
 
 export default function Login() {
 
@@ -10,8 +10,8 @@ export default function Login() {
         //send login details
     }
 
-    function handleChange(type, e) {
-        setState((ps) => ({ ...ps, [type]: e.target.value }))
+    function handleChange(field, e) {
+        setState((ps) => ({ ...ps, [field]: e.target.value }))
     }
 
     return <div className="flex h-svh">
@@ -28,14 +28,16 @@ export default function Login() {
 
             <input type="text" onChange={(e) => handleChange("user", e)} placeholder=" Input username or email" className="border rounded-lg border-violet-400" autoComplete="username" />
             <br />
+            
             <input type="password" onChange={(e) => handleChange("pw", e)} placeholder=" Input your password" className="border rounded-lg border-violet-400" autoComplete="current-password" />
             <br />
-
-            <MainButton onClick={() => handleClick()} text="Sign in" color="dark" />
+ 
+            <MainButton text="Sign in" color="dark" onClick={() => handleClick()} />
             <br />
 
-            <Link href="passwordReset"><MainButton onClick={() => handleClick()} text="forgor 💀 ?" color="light" /></Link>
-
+            <Link href="passwordReset">
+                <MainButton text="forgor 💀 ?" color="light" onClick={() => handleClick()}/>
+            </Link>
 
         </div>
     </div>

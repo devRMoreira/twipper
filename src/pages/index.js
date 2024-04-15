@@ -16,6 +16,7 @@ export default function Home() {
 
 			<h1 className="text-3xl mb-10 ml-6 self-start">Join what's going on in the world today.</h1>
 
+			{/* <button  className="text-center border w-24 rounded-lg bg-violet-400 border-violet-900 text-white"> asdasd</button> */}
 
 			<Link href="register">
 				<MainButton text="Register" color="dark" />
