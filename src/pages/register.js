@@ -116,7 +116,7 @@ export default function Register() {
                 {state.checks?.birthDate === true ? "✔" : "❌"}
 
                 <p className="text-sm">You must be at least 13 years old.</p>
-                <p className="text-sm">This info is used merely for verification purposes.</p>
+                <p className="text-sm">This info won't be shown publicly.</p>
                 <br />
 
                 <MainButton text="Sign up!" color="dark" onClick={() => handleRegistration()} />
