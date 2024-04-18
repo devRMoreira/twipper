@@ -82,18 +82,24 @@ export function validateAllFields(fieldChecks) {
 
     delete fieldChecks.allFields
 
-    return Object.values(fieldChecks).every((ele) => {
+    let validation = false
 
-        if (typeof ele === "object") {
+    const keys = Object.keys(fieldChecks)
 
-            return Object.values(ele).every((subEle) => subEle === true)
-        } else {
-            return ele === true
-        }
-    })
+    if (keys.length > 0) {
 
+        validation = Object.values(fieldChecks).every((ele) => {
 
+            if (typeof ele === "object") {
 
+                return Object.values(ele).every((subEle) => subEle === true)
+            } else {
+                return ele === true
+            }
+        })
 
+    }
+
+    return validation
 }
 

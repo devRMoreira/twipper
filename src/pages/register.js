@@ -44,7 +44,9 @@ export default function Register() {
 
     async function handleRegistration() {
 
-        if (!validateAllFields(state.checks ?? 0)) {
+        const validData = validateAllFields(state.checks ?? 0)
+
+        if (!validData) {
 
             return setState((ps) => ({ ...ps, checks: { ...ps.checks, allFields: false } }))
 
@@ -52,7 +54,7 @@ export default function Register() {
 
         setState((ps) => ({ ...ps, checks: { ...ps.checks, allFields: true } }))
 
-        const res = await sendNewRegistration(state)
+        const res = await sendNewRegistration(state.user)
 
         if (res.ok) {
 
