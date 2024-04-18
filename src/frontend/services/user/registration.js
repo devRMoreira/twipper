@@ -26,10 +26,9 @@ export function isValidName(name) {
 
 
 export function isValidBirthdate(date) {
-    // days 4749
-    const now = moment()
-    const diff = now.diff(date, "days")
-    return diff >= 4749
+
+    return moment(date).valueOf() > 409968000000
+
 
 }
 
