@@ -4,7 +4,30 @@ import { useState } from "react"
 
 export default function Register() {
 
-    const [state, setState] = useState({})
+    const [state, setState] = useState({
+        "user": {
+            "name": "Abcd",
+            "email": "abcd@abcd.ef",
+            "password": "123abc",
+            "passwordConfirmation": "123abc",
+            "birthDate": "2010-05-04"
+        },
+        "checks": {
+            "name": {
+                "special": true,
+                "length": true
+            },
+            "email": true,
+            "password": {
+                "number": true,
+                "letter": true,
+                "length": true
+            },
+            "passwordConfirmation": true,
+            "birthDate": true,
+            "allFields":true
+        }
+    })
 
     function handleChange(field, e) {
 
@@ -53,6 +76,7 @@ export default function Register() {
         }
 
         setState((ps) => ({ ...ps, checks: { ...ps.checks, allFields: true } }))
+
 
         const res = await sendNewRegistration(state.user)
 
