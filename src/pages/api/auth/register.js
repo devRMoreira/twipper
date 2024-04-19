@@ -18,16 +18,14 @@ export default async function handler(req, res) {
 			birthDate: req.body.birthDate
 		}
 
-		//TODO Add newUser.name validation (unique or not)
 
+		const success = await registerNewUser(userReceived)
 
-		if (!birthDateIsValid(userReceived.birthDate)) {
-			res.send(400).end()
+		if (success.error) {
+			res.status(409).json(success)
 		}
 
-		await registerNewUser(userReceived)
-
-		res.json(userReceived)
+		res.json(success)
 
 	}
 
