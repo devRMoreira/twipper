@@ -24,7 +24,7 @@ export async function getMongoCollection(collectionName, dbName = defaultDB) {
     return await database.collection(collectionName)
 }
 
-export async function insertDocument(document, collectionName, dbName = defaultDB) {
+export async function insertOneDocument(document, collectionName, dbName = defaultDB) {
     const client = await connectToMongo()
     const database = await client.db(dbName)
     return await database.collection(collectionName).insertOne(document)
