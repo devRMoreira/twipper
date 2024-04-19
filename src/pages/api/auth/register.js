@@ -1,5 +1,7 @@
-import { registerNewUser } from "@/backend/data/user/registration"
-import { birthDateIsValid, hashPassword } from "@/backend/services/user/utils"
+
+import { registerNewUser } from "@/backend/services/user/registration"
+import { birthDateIsValid } from "@/backend/services/utils/dateUtils"
+import { hashPassword } from "@/backend/services/utils/passwordUtils"
 
 export default async function handler(req, res) {
 
@@ -9,7 +11,7 @@ export default async function handler(req, res) {
 			res.send(400).end()
 		}
 
-		const newUser = {
+		const userReceived = {
 			name: req.body.name,
 			email: req.body.email,
 			password: await hashPassword(req.body.password),
@@ -19,13 +21,13 @@ export default async function handler(req, res) {
 		//TODO Add newUser.name validation (unique or not)
 
 
-		if (!birthDateIsValid(newUser.birthDate)) {
+		if (!birthDateIsValid(userReceived.birthDate)) {
 			res.send(400).end()
 		}
 
-		await registerNewUser(newUser)
+		await registerNewUser(userReceived)
 
-		res.json(newUser)
+		res.json(userReceived)
 
 	}
 

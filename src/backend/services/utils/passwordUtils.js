@@ -1,4 +1,3 @@
-import moment from "moment"
 const bcrypt = require("bcrypt")
 
 export async function hashPassword(password) {
@@ -18,11 +17,5 @@ export async function isSameHashedPassword(passwordToConfirm, hashPassword) {
     // })
 
     return "cenas"
-
-}
-
-export function birthDateIsValid(date) {
-
-    return moment(date).valueOf() > 409968000000
 
 }
