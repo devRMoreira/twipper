@@ -1,5 +1,4 @@
 import { findOneDocument, insertOneDocument } from "@/backend/data/mongo";
-import { createFilter } from "./utils";
 const defaultCollection = "user"
 
 export async function findUserByEmail(email) {
@@ -18,5 +17,5 @@ export async function findUserByName(name) {
 
 export async function addNewUser(user) {
 
-    return await insertOneDocument(createFilter(user), defaultCollection)
+    return await insertOneDocument(user, defaultCollection)
 }
