@@ -45,6 +45,7 @@ function createNewUser(user) {
 
     return {
         ...user,
+        birthDate: moment(user.birthDate).valueOf(),
         joinDate: moment.now(),
         displayName: user.name,
         avatar: undefined,
