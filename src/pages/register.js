@@ -25,7 +25,7 @@ export default function Register() {
             },
             "passwordConfirmation": true,
             "birthDate": true,
-            "allFields":true
+            "allFields": true
         }
     })
 
@@ -61,8 +61,6 @@ export default function Register() {
             const dateOk = isValidBirthdate(value)
             setState((ps) => ({ ...ps, checks: { ...ps.checks, [field]: dateOk } }))
         }
-
-
     }
 
     async function handleRegistration() {
