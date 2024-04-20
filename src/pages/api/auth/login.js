@@ -1,9 +1,14 @@
-export default function handler(req, res) {
+import { signInUser } from "@/backend/services/user/login"
+
+export default async function handler(req, res) {
 
     if(req.method === "POST"){
 
+        const userReceived = req.body
 
-        res.end()
+        const success = await signInUser(userReceived)
+
+        res.json(success)
 
         
     }
