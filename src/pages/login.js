@@ -1,17 +1,18 @@
 import Link from "next/link"
 import { useState } from "react"
 import MainButton from "@/frontend/components/buttons/MainButton"
+import { sendLoginInfo } from "@/frontend/services/user/login"
 
 export default function Login() {
 
     const [state, setState] = useState({})
 
-    function handleClick() {
-        //send login details
+    async function handleClick() {
+        const res = await sendLoginInfo(state)
     }
 
-    function handleChange(field, e) {
-        setState((ps) => ({ ...ps, [field]: e.target.value }))
+    function handleChange(field, value) {
+        setState((ps) => ({ ...ps, user: { ...ps.user, [field]: value } }))
     }
 
     return <div className="flex h-svh">
@@ -28,15 +29,15 @@ export default function Login() {
 
             <input type="text" onChange={(e) => handleChange("user", e)} placeholder=" Input username or email" className="border rounded-lg border-violet-400" autoComplete="username" />
             <br />
-            
-            <input type="password" onChange={(e) => handleChange("pw", e)} placeholder=" Input your password" className="border rounded-lg border-violet-400" autoComplete="current-password" />
+
+            <input type="password" onChange={(e) => handleChange("password", e)} placeholder=" Input your password" className="border rounded-lg border-violet-400" autoComplete="current-password" />
             <br />
- 
+
             <MainButton text="Sign in" color="dark" onClick={() => handleClick()} />
             <br />
 
             <Link href="passwordReset">
-                <MainButton text="forgor 💀 ?" color="light" onClick={() => handleClick()}/>
+                <MainButton text="forgor 💀 ?" color="light" onClick={() => handleClick()} />
             </Link>
 
         </div>
