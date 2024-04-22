@@ -3,14 +3,18 @@ const defaultCollection = "user"
 
 export async function findUserByEmail(email) {
 
-    const filter = { email: email }
+    const regexSearch = new RegExp(email, "i")
+    
+    const filter = { email: { $regex: regexSearch }}
 
     return await findOneDocument(filter, defaultCollection)
 }
 
 export async function findUserByName(name) {
 
-    const filter = { name: name }
+    const regexSearch = new RegExp(name, "i")
+    
+    const filter = { name: { $regex: regexSearch }}
 
     return await findOneDocument(filter, defaultCollection)
 }
@@ -19,3 +23,4 @@ export async function addNewUser(user) {
 
     return await insertOneDocument(user, defaultCollection)
 }
+
