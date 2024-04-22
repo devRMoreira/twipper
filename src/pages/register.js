@@ -1,5 +1,6 @@
 import MainButton from "@/frontend/components/buttons/MainButton"
-import { isValidName, isValidPassword, checkPasswordsMatch, sendNewRegistration, isValidEmail, isValidBirthdate, validateAllFields } from "@/frontend/services/user/registration"
+import { isValidName, isValidPassword, checkPasswordsMatch, sendNewRegistration, isValidBirthdate, validateAllFields } from "@/frontend/services/user/registration"
+import { isValidEmail } from "@/frontend/services/user/utils"
 import { useState } from "react"
 
 export default function Register() {

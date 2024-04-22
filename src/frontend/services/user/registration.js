@@ -45,12 +45,6 @@ function nameLength(name) {
 
 }
 
-export function isValidEmail(email) {
-
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
-
-}
-
 export function isValidPassword(password) {
 
     return {
