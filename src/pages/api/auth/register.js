@@ -1,6 +1,5 @@
 
 import { registerNewUser } from "@/backend/services/user/registration"
-import { birthDateIsValid } from "@/backend/services/utils/dateUtils"
 import { hashPassword } from "@/backend/services/utils/passwordUtils"
 
 export default async function handler(req, res) {
