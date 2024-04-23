@@ -38,3 +38,14 @@ export async function findUserByNameOrEmail(string) {
 
     return await findOneDocument(filter, defaultCollection)
 }
+
+export async function findUserById(id) {
+
+    const filter = {
+        "_id": {
+            "$oid": id
+        }
+    }
+
+    return await findOneDocument(filter, defaultCollection)
+}
