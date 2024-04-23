@@ -1,14 +1,23 @@
 import Link from "next/link"
 import { useState } from "react"
 import MainButton from "@/frontend/components/buttons/MainButton"
-import { sendLoginInfo } from "@/frontend/services/user/login"
+import { isValidUser, sendLoginInfo } from "@/frontend/services/user/login"
 
 export default function Login() {
 
     const [state, setState] = useState({})
 
     async function handleClick() {
-        const res = await sendLoginInfo(state)
+
+        if (isValidUser(state.user)) {
+
+            setState((ps) => ({ ...ps, invalid: false }))
+
+            const res = await sendLoginInfo(state.user)
+
+        } else {
+            setState((ps) => ({ ...ps, invalid: true }))
+        }
     }
 
     function handleChange(field, value) {
@@ -32,6 +41,7 @@ export default function Login() {
 
             <input type="password" onChange={(e) => handleChange("password", e)} placeholder=" Input your password" className="border rounded-lg border-violet-400" autoComplete="current-password" />
             <br />
+            <p className="text-red-600 ">{state.invalid == true && "Please fill all fields."}⠀</p>
 
             <MainButton text="Sign in" color="dark" onClick={() => handleClick()} />
             <br />

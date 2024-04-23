@@ -11,3 +11,8 @@ export async function sendLoginInfo(user) {
     return res.ok
 
 }
+
+export function isValidUser(user) {
+
+    return user.user.length > 0 && user.password.length > 0
+}
