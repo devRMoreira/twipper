@@ -10,10 +10,8 @@ export async function hashPassword(password) {
 
 export async function isSameHashedPassword(passwordToConfirm, hashPassword) {
 
-    // return bcrypt.compare(passwordToConfirm, hashPassword).then(function (res){
-    //     return res
-    // })
-
-    return "cenas"
+    return bcrypt.compare(passwordToConfirm, hashPassword).then(function (res){
+        return res
+    })
 
 }

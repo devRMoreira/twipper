@@ -1,35 +1,21 @@
-import { findUserByEmail, findUserByName } from "@/backend/data/userData"
+import { findUserByNameOrEmail } from "@/backend/data/userData"
+import { isSameHashedPassword } from "../utils/passwordUtils"
 
-export async function signInUser(user) {
+export async function signInUser(userReceived) {
 
-    if (isEmail(user.name)) {
+    const registeredUser = await findUserByNameOrEmail(userReceived.name)
 
-        const res = await findUserByEmail(user.name)
+    if (!registeredUser) {
+        return { error: "Invalid credentials." }
+    }
 
-        if(!res){
-            return {error: "Invalid credentials."}
-        } else {
-            return res
-        }
+    const validPassword = await isSameHashedPassword(userReceived.password, registeredUser.password)
 
-    } else {
+    if (!validPassword) {
 
-        const res = await findUserByName(user.name)
-
-        if(!res){
-            return {error: "Invalid credentials."}
-        } else {
-            return res
-        }
+        return { error: "Invalid credentials." }
 
     }
 
-
-}
-
-
-function isEmail(email) {
-
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
-
+    return registeredUser
 }
