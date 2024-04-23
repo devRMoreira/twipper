@@ -6,14 +6,21 @@ export async function signInUser(user) {
 
         const res = await findUserByEmail(user.name)
 
-        return res
-
+        if(!res){
+            return {error: "Invalid credentials."}
+        } else {
+            return res
+        }
 
     } else {
 
         const res = await findUserByName(user.name)
 
-        return res
+        if(!res){
+            return {error: "Invalid credentials."}
+        } else {
+            return res
+        }
 
     }
 
