@@ -1,5 +1,6 @@
 import { findUserByNameOrEmail } from "@/backend/data/userData"
 import { isSameHashedPassword } from "../utils/passwordUtils"
+import { filterUserLogin } from "../utils/userUtils"
 
 export async function signInUser(userReceived) {
 
@@ -17,5 +18,5 @@ export async function signInUser(userReceived) {
 
     }
 
-    return registeredUser
+    return filterUserLogin(registeredUser)
 }
