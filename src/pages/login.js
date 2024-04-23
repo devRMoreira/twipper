@@ -9,19 +9,26 @@ export default function Login() {
 
     async function handleClick() {
 
-        if (isValidUser(state.user)) {
+        const validUser = isValidUser(state.user)
 
-            setState((ps) => ({ ...ps, invalid: false }))
+        if (validUser) {
+
+            setState((ps) => ({ ...ps, error: "" }))
 
             const res = await sendLoginInfo(state.user)
 
+            if(!res.ok){
+                setState((ps) => ({ ...ps, error: `Invalid credentials.` }))
+            }
+
         } else {
-            setState((ps) => ({ ...ps, invalid: true }))
+            setState((ps) => ({ ...ps, error: "Please fill all fields." }))
         }
     }
 
-    function handleChange(field, value) {
-        setState((ps) => ({ ...ps, user: { ...ps.user, [field]: value } }))
+    function handleChange(field, e) {
+
+        setState((ps) => ({ ...ps, user: { ...ps.user, [field]: e.target.value } }))
     }
 
     return <div className="flex h-svh">
@@ -41,7 +48,7 @@ export default function Login() {
 
             <input type="password" onChange={(e) => handleChange("password", e)} placeholder=" Input your password" className="border rounded-lg border-violet-400" autoComplete="current-password" />
             <br />
-            <p className="text-red-600 ">{state.invalid == true && "Please fill all fields."}⠀</p>
+            <p className="text-red-600 ">{state.error?.length > 0 && `${state.error}`}⠀</p>
 
             <MainButton text="Sign in" color="dark" onClick={() => handleClick()} />
             <br />

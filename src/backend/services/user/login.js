@@ -4,7 +4,7 @@ import { filterUserLogin } from "../utils/userUtils"
 
 export async function signInUser(userReceived) {
 
-    const registeredUser = await findUserByNameOrEmail(userReceived.name)
+    const registeredUser = await findUserByNameOrEmail(userReceived.user)
 
     if (!registeredUser) {
         return { error: "Invalid credentials." }

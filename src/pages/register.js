@@ -76,7 +76,6 @@ export default function Register() {
 
         setState((ps) => ({ ...ps, checks: { ...ps.checks, allFields: true } }))
 
-
         const res = await sendNewRegistration(state.user)
 
         if (res.ok) {

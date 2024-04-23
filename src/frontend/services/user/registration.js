@@ -10,8 +10,11 @@ export async function sendNewRegistration(user) {
         }
     })
 
-    return res.ok
+    if (!res.ok) {
+        return res.json()
+    }
 
+    return res
 }
 
 

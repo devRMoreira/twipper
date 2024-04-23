@@ -17,11 +17,10 @@ export default async function handler(req, res) {
 			birthDate: req.body.birthDate
 		}
 
-
 		const success = await registerNewUser(userReceived)
 
 		if (success.error) {
-			res.status(409).json(success)
+			res.status(409).json(success.error)
 		}
 
 		res.json(success)

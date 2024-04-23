@@ -8,11 +8,16 @@ export async function sendLoginInfo(user) {
         }
     })
 
-    return res.ok
+    return res
 
 }
 
 export function isValidUser(user) {
 
-    return user.user.length > 0 && user.password.length > 0
+    if (user !== undefined) {
+
+        return user.user?.length > 0 && user.password?.length > 0
+    }
+
+    return false
 }
